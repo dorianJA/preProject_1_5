@@ -6,8 +6,8 @@ import java.sql.DriverManager;
 public class DBConnection {
     private static Connection connection;
     private static  String userName = "root";
-    private static  String password = "root";
-    private static  String url = "jdbc:mysql://localhost:3306/java_testing?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+    private static  String password = "kazakdar";
+    private static  String url = "jdbc:mysql://localhost:3306/test?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 
     public static Connection getDBConnection() {
         try {

@@ -1,5 +1,6 @@
 package servlets;
 
+import model.User;
 import service.UserService;
 
 import javax.servlet.ServletException;
@@ -18,8 +19,10 @@ public class DeleteServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id = request.getParameter("allUsers");
 
+
         try {
-            userService.deleteUser(Long.parseLong(id));
+            User user = userService.getUserbyId(Long.parseLong(id));
+            userService.deleteUser(user);
         } catch (SQLException e) {
             e.printStackTrace();
         }

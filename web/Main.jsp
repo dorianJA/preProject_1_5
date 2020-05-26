@@ -27,6 +27,8 @@
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+
+
             for(User user: list) {
                 out.println("<option value=" + "'" + user.getId() + "'" + ">" + user.getName() + " "+user.getAge()+ "</option>");
             }

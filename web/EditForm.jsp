@@ -5,7 +5,7 @@
     <title>Edit</title>
 </head>
 <body>
-<h2>Edit user</h2>
+<h2>Edit user!</h2>
 <form action="/editServlet" method="post">
     <li>
         <label>Name:</label>

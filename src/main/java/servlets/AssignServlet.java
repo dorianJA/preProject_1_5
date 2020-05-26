@@ -22,14 +22,13 @@ public class AssignServlet extends HttpServlet {
         String add = "add";
         String edit = "edit";
         String del = "delete";
-        if (request.getParameter("allUsers")==null && add.equals(request.getParameter("Add"))) {
-           response.sendRedirect("AddForm.jsp");
-        }else if(request.getParameter("allUsers")==null && del.equals(request.getParameter("Delete"))){
+        if (request.getParameter("allUsers") == null && add.equals(request.getParameter("Add"))) {
+            response.sendRedirect("AddForm.jsp");
+        } else if (request.getParameter("allUsers") == null && del.equals(request.getParameter("Delete"))) {
             response.sendRedirect("main");
-        }else if(request.getParameter("allUsers")==null && edit.equals(request.getParameter("Edit"))){
+        } else if (request.getParameter("allUsers") == null && edit.equals(request.getParameter("Edit"))) {
             response.sendRedirect("main");
-        }
-        else {
+        } else {
             String usersParam = request.getParameter("allUsers");
 
             if (add.equals(request.getParameter("Add"))) {

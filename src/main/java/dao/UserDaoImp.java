@@ -19,24 +19,22 @@ public class UserDaoImp implements UserDao{
 
 
     @Override
-    public boolean addUser(User user) throws SQLException {
+    public void addUser(User user) throws SQLException {
         preparedStatement = connection.prepareStatement("INSERT into users(age, name) values (?,?)");
         preparedStatement.setInt(1, user.getAge());
         preparedStatement.setString(2, user.getName());
-        int rows = preparedStatement.executeUpdate();
+        preparedStatement.executeUpdate();
         preparedStatement.close();
-        return rows != 0;
     }
 
     @Override
-    public boolean deleteUser(long id) throws SQLException {
+    public void deleteUser(User user) throws SQLException {
         preparedStatement = connection.prepareStatement("DELETE from users where id =?");
-        preparedStatement.setLong(1, id);
-        int rows = preparedStatement.executeUpdate();
+        preparedStatement.setLong(1, user.getId());
+        preparedStatement.executeUpdate();
         preparedStatement.close();
-        return rows != 0;
     }
-
+    @Override
     public User getUserById(long id) throws SQLException {
         preparedStatement = connection.prepareStatement("SELECT * from users where id =?");
         preparedStatement.setLong(1, id);

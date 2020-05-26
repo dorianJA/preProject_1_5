@@ -5,7 +5,7 @@
     <title>Add</title>
 </head>
 <body>
-<h2>Add user</h2>
+<h2>Add user!</h2>
 <form action="/addServlet" method="post">
     <li>
         <label>Name:</label>

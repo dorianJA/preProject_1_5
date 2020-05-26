@@ -30,7 +30,6 @@ public class EditServlet extends HttpServlet {
         response.sendRedirect("/main");
     }
 
-
     private boolean checkData(String name, String age) {
         return (!name.isEmpty() && !age.isEmpty() && name.matches("[a-zA-Z]+") && age.matches("\\d+"));
     }
