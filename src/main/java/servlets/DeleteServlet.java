@@ -13,7 +13,7 @@ import java.sql.SQLException;
 
 @WebServlet("/deleteServlet")
 public class DeleteServlet extends HttpServlet {
-    UserService userService = new UserService();
+    UserService userService = UserService.getInstance();
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

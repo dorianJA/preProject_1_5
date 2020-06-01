@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -14,7 +13,8 @@
     <li>
         <label>Age: </label>
         <input type="number" name="age" size="15">
-    </li> <br>
+    </li>
+    <br>
     <input type="submit" name="addUser" size="10" value="Добавить пользователя">
 </form>
 </body>

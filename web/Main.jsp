@@ -23,7 +23,7 @@
         <%
             List<User> list = null;
             try {
-                list = new UserService().getAllUsers();
+                list = UserService.getInstance().getAllUsers();
             } catch (SQLException e) {
                 e.printStackTrace();
             }

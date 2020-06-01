@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -14,9 +13,10 @@
     <li>
         <label>Age: </label>
         <input type="number" name="age" size="15">
-    </li> <br>
+    </li>
+    <br>
     <input type="submit" name="editUser" size="10" value="Изменить пользователя">
-    <input type="hidden" name="idValue" value="<%= request.getParameter("allUsers") %>" />
+    <input type="hidden" name="idValue" value="<%= request.getParameter("allUsers") %>"/>
 </form>
 </body>
 </html>

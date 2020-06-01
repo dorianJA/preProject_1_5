@@ -1,24 +1,33 @@
 package service;
 
-import Util.DBConnection;
+import Util.DBHelper;
 import dao.UserDao;
-import dao.UserDaoImp;
+import dao.UserDaoFactory;
 import dao.UserHibernateDAO;
 import model.User;
 
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
 public class UserService {
 
     private UserDao userDao;
+    private static UserService userService;
 //    private Connection connection;
 
-    public UserService() {
-//        connection = DBConnection.getDBConnection();
+    private UserService() {
+
+//        connection = Del.getDBConnection();
 //        userDao = new UserDaoImp(connection);
-        userDao = new UserHibernateDAO();
+//        userDao = new UserHibernateDAO();
+        userDao = UserDaoFactory.getUserDao("JDBC");
+    }
+
+    public static UserService getInstance() {
+        if (userService == null){
+            userService = new UserService();
+        }
+        return userService;
     }
 
     public void addUser(User user) throws SQLException {

@@ -13,7 +13,7 @@ import java.sql.SQLException;
 
 @WebServlet("/editServlet")
 public class EditServlet extends HttpServlet {
-    UserService userService = new UserService();
+    UserService userService = UserService.getInstance();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getParameter("name");
