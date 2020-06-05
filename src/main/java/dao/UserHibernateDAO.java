@@ -14,11 +14,20 @@ public class UserHibernateDAO implements UserDao {
     private Session session;
     private SessionFactory sessionFactory;
 
-    public UserHibernateDAO(SessionFactory sessionFactory){
+    public UserHibernateDAO(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 
-
+    @Override
+    public User getUserByNameAndPassword(String name, String password) {
+        session = sessionFactory.openSession();
+        Query<User> query = session.createQuery("from User where name =:parName AND password=:parPass");
+        query.setParameter("parName",name);
+        query.setParameter("parPass",password);
+        User user = query.uniqueResult();
+        session.close();
+        return user;
+    }
 
     @Override
     public void addUser(User user) throws SQLException {
@@ -38,10 +47,10 @@ public class UserHibernateDAO implements UserDao {
         session.close();
     }
 
-    public User getUserById(long id){
+    public User getUserById(long id) {
         session = sessionFactory.openSession();
         Query<User> query = session.createQuery("from User where id = :parId");
-        query.setParameter("parId",id);
+        query.setParameter("parId", id);
         User user = query.getSingleResult();
         session.close();
         return user;
@@ -52,9 +61,9 @@ public class UserHibernateDAO implements UserDao {
         session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
         Query<User> query = session.createQuery("update User set age = :paramAge, name =:paramName where id = :paraId");
-        query.setParameter("paramAge",age);
-        query.setParameter("paramName",name);
-        query.setParameter("paraId",user.getId());
+        query.setParameter("paramAge", age);
+        query.setParameter("paramName", name);
+        query.setParameter("paraId", user.getId());
         query.executeUpdate();
         transaction.commit();
         session.close();

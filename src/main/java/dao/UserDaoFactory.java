@@ -11,13 +11,13 @@ import java.util.Properties;
 public class UserDaoFactory {
 
 
-    public static UserDao getUserDao(String daoType){
+    public static UserDao getUserDao(String daoType) {
         Properties properties = PropertyReader.getProperties(DBHelper.class.getClassLoader().getResourceAsStream("db.properties"));
-        if(daoType.equals(properties.getProperty("hibernate"))){
+        if (daoType.equals(properties.getProperty("hibernate"))) {
             SessionFactory sessionFactory = DBHelper.getInstance().createSessionFactory();
             return new UserHibernateDAO(sessionFactory);
         }
-        if(daoType.equals(properties.getProperty("JDBC"))){
+        if (daoType.equals(properties.getProperty("JDBC"))) {
             Connection connection = DBHelper.getInstance().getConnection();
             return new UserDaoImp(connection);
         }

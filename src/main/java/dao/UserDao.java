@@ -15,4 +15,5 @@ public interface UserDao {
     List<User> getAllUsers() throws SQLException;
 
     User getUserById(long id) throws SQLException;
+    User getUserByNameAndPassword(String name,String password) throws SQLException;
 }

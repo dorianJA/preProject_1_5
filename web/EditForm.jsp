@@ -5,7 +5,7 @@
 </head>
 <body>
 <h2>Edit user!</h2>
-<form action="/editServlet" method="post">
+<form action="/admin/edit" method="post">
     <li>
         <label>Name:</label>
         <input type="text" name="name" size="15">

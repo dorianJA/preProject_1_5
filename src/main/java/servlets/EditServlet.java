@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@WebServlet("/editServlet")
+@WebServlet("/admin/edit")
 public class EditServlet extends HttpServlet {
     UserService userService = UserService.getInstance();
 
@@ -27,7 +27,7 @@ public class EditServlet extends HttpServlet {
                 e.printStackTrace();
             }
         }
-        response.sendRedirect("/main");
+        response.sendRedirect("/admin");
     }
 
     private boolean checkData(String name, String age) {

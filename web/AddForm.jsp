@@ -5,7 +5,7 @@
 </head>
 <body>
 <h2>Add user!</h2>
-<form action="/addServlet" method="post">
+<form action="/admin/add" method="post">
     <li>
         <label>Name:</label>
         <input type="text" name="name" size="15">
@@ -14,6 +14,14 @@
         <label>Age: </label>
         <input type="number" name="age" size="15">
     </li>
+    <li>
+        <label>Password: </label>
+        <input type="password" name="password" size="15">
+    </li>
+    <select name="role" size="1" >
+        <option selected value="user">user</option>
+        <option selected value="admin">admin</option>
+    </select>
     <br>
     <input type="submit" name="addUser" size="10" value="Добавить пользователя">
 </form>

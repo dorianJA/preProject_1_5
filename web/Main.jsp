@@ -18,8 +18,8 @@
 <body>
 
 <h2>Список пользователей</h2>
-<form action="/doServlet" method="get">
-    <select name="allUsers" multiple size="16">
+<form action="/admin/crud" method="get">
+    <select name="allUsers"  size="16">
         <%
             List<User> list = null;
             try {

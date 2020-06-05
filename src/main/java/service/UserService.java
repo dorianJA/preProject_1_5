@@ -20,7 +20,7 @@ public class UserService {
 //        connection = Del.getDBConnection();
 //        userDao = new UserDaoImp(connection);
 //        userDao = new UserHibernateDAO();
-        userDao = UserDaoFactory.getUserDao("JDBC");
+        userDao = UserDaoFactory.getUserDao("hibernate");
     }
 
     public static UserService getInstance() {
@@ -48,6 +48,9 @@ public class UserService {
 
     public List<User> getAllUsers() throws SQLException {
         return userDao.getAllUsers();
+    }
+    public User getUserByNameAndPassword(String name, String password) throws SQLException {
+        return userDao.getUserByNameAndPassword(name,password);
     }
 }
 

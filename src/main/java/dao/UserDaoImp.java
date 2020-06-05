@@ -17,12 +17,30 @@ public class UserDaoImp implements UserDao{
         this.connection = connection;
     }
 
+    @Override
+    public User getUserByNameAndPassword(String name, String password) throws SQLException {
+        preparedStatement = connection.prepareStatement("SELECT * from user where name=? AND password=?");
+        preparedStatement.setString(1,name);
+        preparedStatement.setString(2,password);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        User user = new User();
+        while (resultSet.next()){
+            user.setName(resultSet.getString("name"));
+            user.setAge(resultSet.getInt("age"));
+            user.setId(resultSet.getLong("id"));
+            user.setPassword(resultSet.getString("password"));
+            user.setRole(resultSet.getString("role"));
+        }
+        return user;
+    }
 
     @Override
     public void addUser(User user) throws SQLException {
-        preparedStatement = connection.prepareStatement("INSERT into user(age, name) values (?,?)");
+        preparedStatement = connection.prepareStatement("INSERT into user(age, name,password,role) values (?,?,?,?)");
         preparedStatement.setInt(1, user.getAge());
         preparedStatement.setString(2, user.getName());
+        preparedStatement.setString(3,user.getPassword());
+        preparedStatement.setString(4,user.getRole());
         preparedStatement.executeUpdate();
         preparedStatement.close();
     }
