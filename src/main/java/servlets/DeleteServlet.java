@@ -21,7 +21,7 @@ public class DeleteServlet extends HttpServlet {
 
 
         try {
-            User user = userService.getUserbyId(Long.parseLong(id));
+            User user = userService.getUserById(Long.parseLong(id));
             userService.deleteUser(user);
         } catch (SQLException e) {
             e.printStackTrace();

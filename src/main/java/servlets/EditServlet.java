@@ -3,6 +3,7 @@ package servlets;
 import model.User;
 import service.UserService;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,13 +22,19 @@ public class EditServlet extends HttpServlet {
         String id = request.getParameter("idValue");
         if (checkData(name, age)) {
             try {
-                User user = userService.getUserbyId(Long.parseLong(id));
+                User user = userService.getUserById(Long.parseLong(id));
                 userService.updateUser(user, Integer.parseInt(age), name);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
         response.sendRedirect("/admin");
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/EditForm.jsp");
+        requestDispatcher.forward(req, resp);
     }
 
     private boolean checkData(String name, String age) {

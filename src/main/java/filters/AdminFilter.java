@@ -22,14 +22,16 @@ public class AdminFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         HttpServletResponse resp = (HttpServletResponse) servletResponse;
         HttpSession session = req.getSession();
+
         if (session == null || session.getAttribute("user") == null) {
             servletRequest.getServletContext().getRequestDispatcher("/login").forward(req, resp);
         }
         User user = (User) session.getAttribute("user");
-        if(user.getRole().equals("admin")){
-            filterChain.doFilter(req,resp);
-        }else {
+        if (user != null && user.getRole().equals("admin")){
+            filterChain.doFilter(req, resp);
+        }else{
             servletRequest.getServletContext().getRequestDispatcher("/login").forward(req, resp);
+
         }
 
     }

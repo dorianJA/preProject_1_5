@@ -20,7 +20,7 @@ public class UserService {
 //        connection = Del.getDBConnection();
 //        userDao = new UserDaoImp(connection);
 //        userDao = new UserHibernateDAO();
-        userDao = UserDaoFactory.getUserDao("hibernate");
+        userDao = UserDaoFactory.getUserDao();
     }
 
     public static UserService getInstance() {
@@ -42,7 +42,7 @@ public class UserService {
         userDao.updateUser(user, age, name);
     }
 
-    public User getUserbyId(long id) throws SQLException {
+    public User getUserById(long id) throws SQLException {
         return userDao.getUserById(id);
     }
 

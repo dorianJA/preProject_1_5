@@ -23,8 +23,9 @@ public class UserDaoImp implements UserDao{
         preparedStatement.setString(1,name);
         preparedStatement.setString(2,password);
         ResultSet resultSet = preparedStatement.executeQuery();
-        User user = new User();
+        User user = null;
         while (resultSet.next()){
+            user = new User();
             user.setName(resultSet.getString("name"));
             user.setAge(resultSet.getInt("age"));
             user.setId(resultSet.getLong("id"));

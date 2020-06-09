@@ -31,7 +31,7 @@ public class AssignServlet extends HttpServlet {
                 requestDispatcher.forward(request, response);
             } else if (edit.equals(request.getParameter("Edit")) && !usersParam.isEmpty()) {
                 System.out.println("This is edit");
-                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/EditForm.jsp");
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/admin/edit");
                 requestDispatcher.forward(request, response);
             } else if (del.equals(request.getParameter("Delete")) && !usersParam.isEmpty()) {
                 System.out.println("This is delete");

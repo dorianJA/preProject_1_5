@@ -37,7 +37,7 @@
     </select> <br>
     <input type="submit" name="Add" value="add"> <br>
     <input type="submit" name="Edit" value="edit"> <br>
-    <input type="submit" name="Delete" value="delete">
+    <input type="submit" name="Delete" value="delete"> <br>
 </form>
 
 

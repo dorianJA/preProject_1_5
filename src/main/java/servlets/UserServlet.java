@@ -19,6 +19,6 @@ public class UserServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
-        response.getWriter().write("Name: "+user.getName()+" "+" Age" +user.getAge());
+        response.getWriter().write("Name: "+user.getName()+" "+" Age " +user.getAge());
     }
 }
