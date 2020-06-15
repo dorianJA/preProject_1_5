@@ -18,10 +18,13 @@
         <label>Password: </label>
         <input type="password" name="password" size="15">
     </li>
+    <li>
+        <label>Role: </label>
     <select name="role" size="1" >
         <option selected value="user">user</option>
         <option selected value="admin">admin</option>
     </select>
+    </li>
     <br>
     <input type="submit" name="addUser" size="10" value="Добавить пользователя">
 </form>
