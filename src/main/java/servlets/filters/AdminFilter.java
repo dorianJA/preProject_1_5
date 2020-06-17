@@ -1,4 +1,4 @@
-package filters;
+package servlets.filters;
 
 import model.User;
 
@@ -13,7 +13,7 @@ import java.io.IOException;
 public class AdminFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        System.out.println("Init FIlter");
+
 
     }
 

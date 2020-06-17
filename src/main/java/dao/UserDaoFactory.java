@@ -1,6 +1,6 @@
 package dao;
 
-import Util.DBConnection;
+
 import Util.DBHelper;
 import Util.PropertyReader;
 import org.hibernate.SessionFactory;
@@ -10,7 +10,7 @@ import java.util.Properties;
 
 public class UserDaoFactory {
 
-
+//singleton, возвращать реализацию, дефолтное значение switch
     public static UserDao getUserDao() {
         Properties properties = PropertyReader.getProperties(DBHelper.class.getClassLoader().getResourceAsStream("db.properties"));
         if (properties.getProperty("daoType").equals("hibernate")) {

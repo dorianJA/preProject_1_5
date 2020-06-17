@@ -9,6 +9,8 @@ import model.User;
 import java.sql.SQLException;
 import java.util.List;
 
+//interface, static final userdao, свои исключения
+
 public class UserService {
 
     private UserDao userDao;

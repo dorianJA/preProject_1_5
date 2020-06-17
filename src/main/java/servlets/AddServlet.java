@@ -14,9 +14,10 @@ import java.sql.SQLException;
 
 @WebServlet("/admin/add")
 public class AddServlet extends HttpServlet {
-    UserService userService = UserService.getInstance();
+    private UserService userService = UserService.getInstance();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         String name = request.getParameter("name");
         String age = request.getParameter("age");
         String password = request.getParameter("password");
@@ -29,6 +30,8 @@ public class AddServlet extends HttpServlet {
                 e.printStackTrace();
             }
             response.sendRedirect("/admin");
+        }else {
+            response.sendRedirect("/admin");
         }
     }
 
@@ -40,6 +43,6 @@ public class AddServlet extends HttpServlet {
 
     private boolean checkData(String name, String age, String pass, String role) {
         return (!name.isEmpty() && !age.isEmpty() && !pass.isEmpty() && !role.isEmpty() &&
-                name.matches("[a-zA-Z]+") && age.matches("\\d+"));
+                name.matches("[a-zA-Zа-яА-Я]+") && age.matches("\\d+"));
     }
 }
