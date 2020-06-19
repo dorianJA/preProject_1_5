@@ -30,7 +30,7 @@
     </li>
     <br>
     <input type="submit" name="editUser" size="10" value="Изменить пользователя">
-    <input type="hidden" name="idValue" value="<%= request.getParameter("idValue") %>"/>
+    <input type="hidden" name="idValue" value=${userData.id}>
 </form>
 </body>
 </html>
