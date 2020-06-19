@@ -11,10 +11,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet("/admin/edit")
 public class EditServlet extends HttpServlet {
-    UserService userService = UserService.getInstance();
+    private UserService userService = UserService.getInstance();
+    private List<User> list;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getParameter("name");
@@ -33,6 +36,13 @@ public class EditServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String id = req.getParameter("idValue");
+        try {
+            User user = userService.getUserById(Long.parseLong(id));
+            req.setAttribute("userData",user);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("/EditForm.jsp");
         requestDispatcher.forward(req, resp);
     }

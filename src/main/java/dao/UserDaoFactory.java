@@ -11,6 +11,21 @@ import java.util.Properties;
 public class UserDaoFactory {
 
 //singleton, возвращать реализацию, дефолтное значение switch
+
+//    private static UserDaoFactory userDaoFactory;
+//
+//    private UserDaoFactory(){
+//
+//    }
+//
+//    public static UserDaoFactory getFactory(){
+//        if(userDaoFactory == null){
+//            userDaoFactory = new UserDaoFactory();
+//        }
+//        return userDaoFactory;
+//    }
+
+
     public static UserDao getUserDao() {
         Properties properties = PropertyReader.getProperties(DBHelper.class.getClassLoader().getResourceAsStream("db.properties"));
         if (properties.getProperty("daoType").equals("hibernate")) {

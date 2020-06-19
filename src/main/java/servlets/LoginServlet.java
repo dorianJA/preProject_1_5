@@ -2,6 +2,7 @@ package servlets;
 
 import dao.UserDaoFactory;
 import model.User;
+import org.hibernate.Session;
 import service.UserService;
 
 import javax.servlet.ServletException;
@@ -15,12 +16,11 @@ import java.sql.SQLException;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
-    private UserService userService;
+    private UserService userService = UserService.getInstance();
 
     @Override
     public void init() throws ServletException {
         super.init();
-        userService = UserService.getInstance();
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -31,13 +31,15 @@ public class LoginServlet extends HttpServlet {
             User user = userService.getUserByNameAndPassword(name, password);
             if (user == null) {
                 response.sendRedirect("/login");
-            }else {
+            } else {
                 HttpSession session = request.getSession();
                 session.setAttribute("user", user);
                 if (user.getRole().equals("user")) {
                     response.getWriter().print("Welcome User " + user.getName());
+                    response.sendRedirect("/user");
                 } else {
                     response.getWriter().print("Welcome Admin " + user.getName());
+                    response.sendRedirect("/admin");
                 }
             }
         } catch (SQLException e) {

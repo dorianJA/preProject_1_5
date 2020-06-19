@@ -13,16 +13,11 @@ import java.util.List;
 
 public class UserService {
 
-    private UserDao userDao;
+    private final static UserDao userDao = UserDaoFactory.getUserDao();
     private static UserService userService;
-//    private Connection connection;
 
     private UserService() {
 
-//        connection = Del.getDBConnection();
-//        userDao = new UserDaoImp(connection);
-//        userDao = new UserHibernateDAO();
-        userDao = UserDaoFactory.getUserDao();
     }
 
     public static UserService getInstance() {

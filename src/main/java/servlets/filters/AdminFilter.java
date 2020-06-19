@@ -27,9 +27,9 @@ public class AdminFilter implements Filter {
             servletRequest.getServletContext().getRequestDispatcher("/login").forward(req, resp);
         }
         User user = (User) session.getAttribute("user");
-        if (user != null && user.getRole().equals("admin")){
+        if (user != null && user.getRole().equals("admin")) {
             filterChain.doFilter(req, resp);
-        }else{
+        } else {
             servletRequest.getServletContext().getRequestDispatcher("/login").forward(req, resp);
 
         }
