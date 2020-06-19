@@ -5,13 +5,21 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public class PropertyReader {
-    public static Properties getProperties(InputStream propertyFile) {
+    private String propertyFileName;
+
+    public PropertyReader(String propertyFileName) {
+        this.propertyFileName = propertyFileName;
+    }
+
+    public String getProperties(String propertyName) {
         Properties properties = new Properties();
-        try {
-            properties.load(propertyFile);
+        String property = null;
+        try (InputStream inputStream = PropertyReader.class.getClassLoader().getResourceAsStream(propertyFileName)) {
+            properties.load(inputStream);
+            property = properties.getProperty(propertyName);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return properties;
+        return property;
     }
 }

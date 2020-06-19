@@ -11,6 +11,7 @@ import java.util.Properties;
 public class UserDaoFactory {
 
 //singleton, возвращать реализацию, дефолтное значение switch
+    private final static PropertyReader propertyReader = new PropertyReader("db.properties");
 
 //    private static UserDaoFactory userDaoFactory;
 //
@@ -27,16 +28,16 @@ public class UserDaoFactory {
 
 
     public static UserDao getUserDao() {
-        Properties properties = PropertyReader.getProperties(DBHelper.class.getClassLoader().getResourceAsStream("db.properties"));
-        if (properties.getProperty("daoType").equals("hibernate")) {
-            SessionFactory sessionFactory = DBHelper.getInstance().createSessionFactory();
-            return new UserHibernateDAO(sessionFactory);
+        String daoType = propertyReader.getProperties("daoType");
+        switch (daoType){
+            case "hibernate":
+                return new UserHibernateDAO(DBHelper.getInstance().createSessionFactory());
+            case "JDBC":
+                return new UserDaoImp(DBHelper.getInstance().getConnection());
+            default:
+                return new UserHibernateDAO(DBHelper.getInstance().createSessionFactory());
+
         }
-        if (properties.getProperty("daoType").equals("JDBC")) {
-            Connection connection = DBHelper.getInstance().getConnection();
-            return new UserDaoImp(connection);
-        }
-        throw new IllegalArgumentException();
 
     }
 }
